@@ -1,0 +1,94 @@
+1.  ru/en = 576/300 ~ 1.92
+    kz/en = 640/300 ~ 2.13
+
+1. bytes
+
+3. using bytes is better approuch as tokenizers dont understand human-based concepts such as words of sentences. Tokenizers works on bites, that is what it actually sees. If latin letter is only 1 byte, but kazakh and russian requres 2 bytes so more tokens are needed.
+
+1.  ru/en = 576/300 ~ 1.92 => 1.30
+    kz/en = 640/300 ~ 2.13 => 2.35
+
+                        EN          RU          KK
+2.  haiku-4.5              841       1,215       2,632
+    sonnet-5             1,683       2,431       5,263
+    opus-5               4,207       6,077      13,158
+    fable-5.1            8,413      12,154      26,316
+    AT 5,000 REQUESTS/DAY -- US dollars per year
+    ------------------------------------------------------------------------
+                            EN          RU          KK
+    haiku-4.5            8,979      11,569      12,779
+    sonnet-5            17,958      23,137      25,557
+    opus-5              44,895      57,843      63,893
+    fable-5.1           89,790     115,687     127,786
+
+This table shows the difference in costs for 3 languages. It shows that even though the request meaning is the same, because payment depends purely on tokens, a company pays ~1.5-3 more depending on the language, since tokenizers are trained primarily on english texts and requires more tokens to comprehend russian or kazakh languages.
+
+3. Haiku-4.5 is the best choice as it has the lowest price among others and easily processes text without any errors.
+
+4. Prompt caching  so you don't pay extra tokens for processing the same prompt over and over, while keeping the full prompt context "active" across requests.
+
+TASK 1
+
+o200k_base
+ru/en ~ 1.37
+kz/en ~ 1.80
+
+cl100k_base
+ru/en ~ 2.30
+kz/en ~ 3.87
+
+TASK 2
+
+FIRST_KK
+------------------------------------------------------------------
+                         EN           RU           KK
+o200k_base                1            2            9
+  ÷ EN                1.00x        2.00x        9.00x
+cl100k_base               1            4           22
+  ÷ EN                1.00x        4.00x       22.00x
+
+SECOND_KK
+------------------------------------------------------------------
+                         EN           RU           KK
+o200k_base                1            2            8
+  ÷ EN                1.00x        2.00x        8.00x
+cl100k_base               1            4           18
+  ÷ EN                1.00x        4.00x       18.00x
+
+FIRST_KK
+------------------------------------------------------------------
+                         EN           RU           KK
+chars                     9            6           22
+bytes                     9           11           40
+words                     1            1            4
+bytes/EN              1.00x        1.22x        4.44x
+bytes/char             1.00         1.83         1.82
+
+SECOND_KK
+------------------------------------------------------------------
+                         EN           RU           KK
+chars                     9            6           22
+bytes                     9           11           40
+words                     1            1            4
+bytes/EN              1.00x        1.22x        4.44x
+bytes/char             1.00         1.83         1.82
+
+TASK 3
+
+COMPLAINT_JSON
+------------------------------------------------------------------
+                         EN           RU           KK
+o200k_base               83          107          123
+  ÷ EN                1.00x        1.29x        1.48x
+cl100k_base              82          155          216
+  ÷ EN                1.00x        1.89x        2.63x
+
+COMPLAINT_JSON
+------------------------------------------------------------------
+                         EN           RU           KK
+chars                   346          381          357
+bytes                   346          589          548
+words                    42           39           34
+bytes/EN              1.00x        1.70x        1.58x
+bytes/char             1.00         1.55         1.54
+

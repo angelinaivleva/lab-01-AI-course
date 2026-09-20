@@ -69,9 +69,55 @@ SYSTEM_PROMPT: Dict[str, str] = {
     ),
 }
 
+NEW_PROMPT: Dict[str, str] = {
+    "en": (
+        "The Navier–Stokes equations are a system of partial differential equations that describes the motion of a viscous incompressible fluid (or gas)."
+    ),
+    "ru": (
+        "Уравнения Навье—Стокса — это система дифференциальных уравнений в частных производных, которая описывает движение вязкой несжимаемой жидкости (или газа)."
+    ),
+    "kk": (
+        "Навье–Стокс теңдеулері — тұтқыр сығылмайтын сұйықтықтың (немесе газдың) қозғалысын сипаттайтын дербес туындылы дифференциалдық теңдеулер жүйесі."
+    )
+}
+
+FIRST_KK: Dict[str, str] = {
+    "kk": (
+        "Әже бүгін үйге қайтты."
+    ),
+     "ru": (
+        "что-то"
+    ),
+     "en": (
+        "something"
+    )
+}
+
+SECOND_KK: Dict[str, str] = {
+    "kk": (
+        "Апа кеше ауылда қалды."
+    ),
+    "ru": (
+        "что-то"
+    ),
+    "en": (
+        "something"
+    )
+}
+
+COMPLAINT_JSON: Dict[str, str] = {
+    "en": '{"greeting": "Good afternoon", "deposit_opened": "March", "branch": "your branch", "rate_terms": "fixed for twelve months", "rate_change_month": "August", "issue": "the rate on my account dropped without any notice", "attachments": ["contract", "statement"], "request": "explain on what basis the rate was changed and restore the original terms"}',
+    "ru": '{"greeting": "Добрый день", "deposit_opened": "март", "branch": "вашем отделении", "rate_terms": "зафиксирована на двенадцать месяцев", "rate_change_month": "август", "issue": "ставка по моему счёту снизилась без какого-либо уведомления", "attachments": ["договор", "выписку"], "request": "объяснить, на каком основании была изменена ставка, и восстановить первоначальные условия"}',
+    "kk": '{"greeting": "Қайырлы күн", "deposit_opened": "наурыз", "branch": "сіздің бөлімшеңізде", "rate_terms": "он екі айға бекітілген", "rate_change_month": "тамыз", "issue": "мөлшерлеме ешқандай хабарламасыз төмендеді", "attachments": ["шарт", "үзінді көшірме"], "request": "мөлшерлеме қандай негізде өзгертілгенін түсіндіріп, бастапқы шарттарды қалпына келтіру"}',
+}
+
 #: Everything the lab measures, keyed by a short id.
 CORPUS: Dict[str, Dict[str, str]] = {
     "sentence": SENTENCE,
     "complaint": COMPLAINT,
     "system_prompt": SYSTEM_PROMPT,
+    "new_prompt": NEW_PROMPT,
+    "complaint_json": COMPLAINT_JSON,
+    "first_kk": FIRST_KK,
+    "second_kk": SECOND_KK,
 }

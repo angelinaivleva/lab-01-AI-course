@@ -41,7 +41,7 @@
   and over, while keeping the full prompt context "active" across requests. It also
   influences speed as we check if this or a similar question was already processed.
 
------ ADDITIONAL TASKS -----
+----- EXTENSION TASKS -----
 
 1. NEW_PROMPT
   ------------------------------------------------------------------
@@ -110,3 +110,93 @@ version. On cl100k_base the pattern is different: en and ru still increase, but 
 actually goes down (265 to 216) instead of staying flat, so for
 this tokenizer kk is not "unchanged", it moves the most of all three languages, just in
 the opposite direction.
+
+----- ADVANCED TASK 7 -----
+
+Checklist: 
+
+(1) declines to explain the rate change rather than fabricating a caus
+(2) invents no number not present in the complaint (no rate, no account number, no date beyond March/August/twelve months)
+(3) answers entirely in the question's language
+(4) names a concrete next step.
+
+Both models answered that due to lack of documents they are not able to answer the question. 
+No imaginary or unrelated numbers were mentioned, and all answers are written in the language 
+of the question without switching to another one. The suggestions about what the user should do next
+are also fine in both cases. So we can conclude that both opus and haiku passed the checklist, 
+however opus showed more thorough answers, including small details that are important for the user 
+to fully understand the context. 
+It also provides additional suggestions, which may reduce the number of following requests a user sends,
+since it already answers some of the questions that might arise.
+
+!!! All  4 tests among both models and 3 languages are successfully passed due to no errors.
+
+          opus  
+  (1)   (2)   (3)   (4)
+ru  +     +    +    +
+en  +     +    +    +  
+kz  +     +    +    +
+
+        haiku
+(1)   (2)   (3)   (4)
+ru  +     +    +    +-
+en  +     +    +    +-  
+kz  +     +    +    +-
+
+opus costs
+
+en = (145 * 5 + 871 * 25) / 1000000 = 0,0225
+ru = 0,03347
+kk = 0,03353
+
+haiku costs
+
+en = (107 * 1 + 131 * 5) / 1000000 = 0,000762
+ru = 0,001754
+kk = 0,002682
+
+ratio
+
+en = 29,5
+ru = 19,1
+kk =12,5
+
+HAIKU:
+
+  "request_tokens": {
+    "en": 107,
+    "ru": 209,
+    "kk": 317
+  },
+  "one_request_billed": {
+    "en": {
+      "input_tokens": 107,
+      "output_tokens": 131
+    },
+    "ru": {
+      "input_tokens": 209,
+      "output_tokens": 309
+    },
+    "kk": {
+      "input_tokens": 317,
+      "output_tokens": 473
+    }
+  }
+
+OPUS:
+
+  "one_request_billed": {
+    "en": {
+      "input_tokens": 145,
+      "output_tokens": 871
+    },
+    "ru": {
+      "input_tokens": 209,
+      "output_tokens": 1297
+    },
+    "kk": {
+      "input_tokens": 317,
+      "output_tokens": 1278
+    }
+  }
+

@@ -1,0 +1,61 @@
+{
+  "model": "opus-5",
+  "model_id": "claude-opus-5",
+  "token_counts": {
+    "sentence": {
+      "en": 26,
+      "ru": 35,
+      "kk": 48
+    },
+    "complaint": {
+      "en": 92,
+      "ru": 134,
+      "kk": 198
+    },
+    "system_prompt": {
+      "en": 58,
+      "ru": 80,
+      "kk": 124
+    },
+    "new_prompt": {
+      "en": 50,
+      "ru": 64,
+      "kk": 89
+    },
+    "complaint_json": {
+      "en": 127,
+      "ru": 159,
+      "kk": 195
+    },
+    "first_kk": {
+      "en": 7,
+      "ru": 9,
+      "kk": 37
+    },
+    "second_kk": {
+      "en": 7,
+      "ru": 9,
+      "kk": 35
+    }
+  },
+  "request_tokens": {
+    "en": 145,
+    "ru": 209,
+    "kk": 317
+  },
+  "one_request_billed": {
+    "en": {
+      "input_tokens": 145,
+      "output_tokens": 871
+    },
+    "ru": {
+      "input_tokens": 209,
+      "output_tokens": 1297
+    },
+    "kk": {
+      "input_tokens": 317,
+      "output_tokens": 1278
+    }
+  }
+}
+
